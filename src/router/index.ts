@@ -37,13 +37,10 @@ export default route(function (/* { store, ssrContext } */) {
 
   Router.beforeEach(async (to, from, next) => {
     const authStore = useAuthStore();
+    await authStore.checkAuth();
 
     console.log('beforeEach', to, from);
     console.log('authStore', authStore);
-
-    if (!authStore.isAuthenticated) {
-      await authStore.checkAuth();
-    }
 
     if (to.meta.requiresAuth && !authStore.isAuthenticated) {
       next('/auth/login');
