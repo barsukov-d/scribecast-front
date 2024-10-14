@@ -3,7 +3,7 @@ import { boot } from 'quasar/wrappers';
 import axios from 'axios';
 
 const $api = axios.create({
-  baseURL: 'http://localhost:9000/api', // Замените на ваш API URL
+  baseURL: import.meta.env.VITE_API_BASE_URL,
   withCredentials: true, // Для отправки куки с запросами
 });
 
