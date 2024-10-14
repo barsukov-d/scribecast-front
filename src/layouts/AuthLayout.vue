@@ -30,7 +30,11 @@
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <q-page class="row items-center justify-evenly">
+        <div class="q-pa-md max-w-96 w-full">
+          <router-view />
+        </div>
+      </q-page>
     </q-page-container>
   </q-layout>
 </template>

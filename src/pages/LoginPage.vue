@@ -1,43 +1,39 @@
 <template>
-  <q-page class="row items-center justify-evenly">
-    <div class="q-pa-md" style="max-width: 400px">
-      <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
-        <q-input
-          filled
-          v-model="name"
-          label="Your name *"
-          hint="Name and surname"
-          lazy-rules
-          :rules="[(val) => (val && val.length > 0) || 'Please type something']"
-        />
+  <h4 class="text-h4 pb-4">Login</h4>
+  <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
+    <q-input
+      filled
+      v-model="email"
+      label="Your e-mail *"
+      lazy-rules
+      :rules="[(val) => (val && val.length > 0) || 'Please type your e-mail']"
+    />
 
-        <q-input
-          filled
-          type="number"
-          v-model="age"
-          label="Your age *"
-          lazy-rules
-          :rules="[
-            (val) => (val !== null && val !== '') || 'Please type your age',
-            (val) => (val > 0 && val < 100) || 'Please type a real age',
-          ]"
-        />
+    <q-input
+      filled
+      type="password"
+      v-model="password"
+      label="Your password *"
+      lazy-rules
+      :rules="[
+        (val) => (val !== null && val !== '') || 'Please type your password',
+        (val) => (val > 0 && val < 100) || 'Please type a real password',
+      ]"
+    />
 
-        <q-toggle v-model="accept" label="I accept the license and terms" />
+    <!-- <q-toggle v-model="accept" label="I accept the license and terms" /> -->
 
-        <div>
-          <q-btn label="Submit" type="submit" color="primary" />
-          <q-btn
+    <div>
+      <q-btn label="Submit" type="submit" color="primary" />
+      <!-- <q-btn
             label="Reset"
             type="reset"
             color="primary"
             flat
             class="q-ml-sm"
-          />
-        </div>
-      </q-form>
+          /> -->
     </div>
-  </q-page>
+  </q-form>
 </template>
 
 <script setup lang="ts">
@@ -50,8 +46,8 @@ defineOptions({
 
 const $q = useQuasar();
 
-const name = ref(null);
-const age = ref(null);
+const email = ref(null);
+const password = ref(null);
 const accept = ref(false);
 
 const onSubmit = () => {
@@ -73,8 +69,8 @@ const onSubmit = () => {
 };
 
 const onReset = () => {
-  name.value = null;
-  age.value = null;
+  email.value = null;
+  password.value = null;
   accept.value = false;
 };
 </script>
